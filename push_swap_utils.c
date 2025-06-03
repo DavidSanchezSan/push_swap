@@ -21,8 +21,8 @@ int	ft_check_valid_input_string(char *s)
 	x = 0;
 	while (s[x])
 	{
-		if ((s[x] == '-' || s[x] == '+') && (s[x + 1] < '0' || s[x + 1] > '9'))
-			return (0);
+		if ((s[x] == '-' || s[x] == '+') && (!s[x + 1] || (s[x + 1] < '0' || s[x + 1] > '9')))
+    		return (0);
 		else if ((s[x] < '0' || s[x] > '9') && s[x] != ' ' && s[x] != '-'
 			&& s[x] != '+')
 			return (0);
@@ -30,6 +30,8 @@ int	ft_check_valid_input_string(char *s)
 	}
 	return (1);
 }
+
+
 
 // Función para dividir y tokenizar cada uno de los elementos que se reciban como input:
 char	**ft_parse(int argc, char **argv)
@@ -88,6 +90,7 @@ long ft_atol(const char *nptr)
 	}
 	return (c * s);
 }
+
 // Función que controla que no haya números repetidos:
 
 int	ft_check_duplicate(long *nbrs, int num_tokens)
@@ -141,11 +144,18 @@ long *error_control_parse(int argc, char **argv)
 			return(0);
 		}
 		nbr_tokens[j] = ft_atol(tokens[j]);
+		if (nbr_tokens[j] > INT_MAX ||nbr_tokens[j] < INT_MIN)
+		{
+			free(nbr_tokens);
+			write(2, "Error\n", 6);
+			return (0);
+		}
 		j++;
 	}
 	//Controlar duplicados:
 	if (!ft_check_duplicate(nbr_tokens, num_tokens))
 	{
+		free(nbr_tokens);
 		write(2, "Error\n", 6);
 		return (0);
 	}

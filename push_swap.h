@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 # define INT_MIN (-2147483648)
 # define INT_MAX 2147483647
 # include <stddef.h>
@@ -22,16 +22,23 @@
 
 typedef struct s_node
 {
-	int				value;
-	struct s_node	*next;
-}					t_node;
+	int value;
+	int index;
+	struct s_node *next;
+} t_node;
+
+typedef struct s_stack
+{
+	t_node *top;
+	int size;
+	char name; // 'A' o 'B'
+} t_stack;
 
 // Funciones auxiliares
 // int					ft_is_valid_number(char *str);
 // long				ft_atol(const char *str);
 // int					ft_is_in_int_range(char *str);
 long				*error_control_parse(int argc, char **argv);
-char				**ft_split(char const *s, char c);
 char				**ft_parse(int argc, char **argv);
 int					ft_check_valid_input_string(char *s);
 char				**ft_split(char const *s, char c);
@@ -43,4 +50,4 @@ size_t				ft_strlcat(char *dst, const char *src, size_t size);
 // void				ft_append_node(t_node **stack, int value);
 // static int			ft_parse_args(int argc, char **argv, t_node **stack);
 // End of preprocessor directives / guards:
-#endif // FT_PUSH_SWAP_H
+#endif // PUSH_SWAP_H
