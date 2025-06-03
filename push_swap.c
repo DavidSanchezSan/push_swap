@@ -19,14 +19,19 @@ int	main(int argc, char **argv)
 
 	long *nbr_tokens = error_control_parse(argc, argv);
 	
+	if (!nbr_tokens)
+		return (1);
+
+	char **tokens = ft_parse(argc, argv);
 	int num_tokens = 0;
-	
-	while (nbr_tokens[num_tokens])
-    	num_tokens++;
-	
+	while (tokens[num_tokens])
+		num_tokens++;
+
 	for (int x = 0; x < num_tokens; x++)
-	    printf("%ld\n", nbr_tokens[x]);
-	
+		printf("%ld\n", nbr_tokens[x]);
+
+	if (argc == 2)
+		free_split(tokens);
 	free(nbr_tokens);
 	return (0);
 }

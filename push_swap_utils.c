@@ -31,8 +31,6 @@ int	ft_check_valid_input_string(char *s)
 	return (1);
 }
 
-
-
 // Función para dividir y tokenizar cada uno de los elementos que se reciban como input:
 char	**ft_parse(int argc, char **argv)
 {
@@ -113,51 +111,98 @@ int	ft_check_duplicate(long *nbrs, int num_tokens)
 	return (1);
 }
 
-long *error_control_parse(int argc, char **argv)
+//Función para liberar array:
+
+void	free_split(char **split)
 {
-    int j = 0;
-	char **tokens = NULL;
-	long *nbr_tokens = NULL;
-	int num_tokens = 0;
-	
-	// Dividir el input en diferentes elementos para gestionar cada número por separado:
-	tokens = ft_parse(argc, argv);
+	int	i;
 
-	// Conocer el tamaño del array de números y reservar memoria:
-	while (tokens[num_tokens])
-        num_tokens++;
+	i = 0;
+	if (!split)
+		return;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
 
-    nbr_tokens = malloc(num_tokens * sizeof(long));
-    if (!nbr_tokens)
-	{
-        write(2, "Error\n", 6);
-        return (0);
-    }
-	// Controlar que cada elemento se compone de dígitos o un único signo
-	//	+ dígitos, convertirlo a long y guardarlo:
+/* Función para manejar errores en el parseo:
+Libera memoria de nbr_tokens si está asignada,
+y si argc==2 (se usó ft_split) libera también tokens.
+Imprime "Error\n" por stderr y retorna NULL para señalizar fallo. */
+static long *handle_parse_error(long *nbr_tokens, char **tokens, int argc)
+{
+    if (nbr_tokens)
+        free(nbr_tokens);
+    if (argc == 2 && tokens)
+        free_split(tokens);
+    write(2, "Error\n", 6);
+    return (NULL);
+}
+
+
+// Cuenta cuántos tokens (strings) hay en el array terminado en NULL
+
+static int	count_tokens(char **tokens)
+{
+	int count;
+
+	count = 0;
+	while (tokens[count])
+		count++;
+	return (count);
+}
+
+/* Valida tokens comprobando su formato, convierte
+a long y almacena en nbr_tokens. También comprueba
+que los números estén dentro de INT_MIN a INT_MAX
+y que no haya duplicados. Devuelve 1 si todo es correcto,
+0 si hay error */
+
+static int	validate_tokens(char **tokens, long *nbr_tokens, int num_tokens)
+{
+	int j;
+
+	j = 0;
 	while (tokens[j])
 	{
-		if(!ft_check_valid_input_string(tokens[j]))
-		{
-			free(nbr_tokens);
-			write(2, "Error\n", 6);
-			return(0);
-		}
-		nbr_tokens[j] = ft_atol(tokens[j]);
-		if (nbr_tokens[j] > INT_MAX ||nbr_tokens[j] < INT_MIN)
-		{
-			free(nbr_tokens);
-			write(2, "Error\n", 6);
+		if (!ft_check_valid_input_string(tokens[j]))
 			return (0);
-		}
+		nbr_tokens[j] = ft_atol(tokens[j]);
+		if (nbr_tokens[j] > INT_MAX || nbr_tokens[j] < INT_MIN)
+			return (0);
 		j++;
 	}
-	//Controlar duplicados:
 	if (!ft_check_duplicate(nbr_tokens, num_tokens))
-	{
-		free(nbr_tokens);
-		write(2, "Error\n", 6);
 		return (0);
-	}
-    return (nbr_tokens);
+	return (1);
+}
+
+
+/* Función que parsea argumentos, valida, convierte,
+detecta errores, y libera memoria si falla.
+Devuelve array de long con los números parseados si éxito,
+NULL y mensaje de error si falla */
+
+long *error_control_parse(int argc, char **argv)
+{
+	char **tokens;
+	long *nbr_tokens;
+	int num_tokens;
+
+	tokens = ft_parse(argc, argv);
+	num_tokens = count_tokens(tokens);
+	if (num_tokens == 0)
+		return handle_parse_error(NULL, tokens, argc);
+
+	nbr_tokens = malloc(num_tokens * sizeof(long));
+	if (!nbr_tokens)
+		return handle_parse_error(NULL, tokens, argc);
+
+	if (!validate_tokens(tokens, nbr_tokens, num_tokens))
+		return handle_parse_error(nbr_tokens, tokens, argc);
+
+	if (argc == 2)
+		free_split(tokens);
+
+	return (nbr_tokens);
 }
