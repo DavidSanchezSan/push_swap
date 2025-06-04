@@ -12,8 +12,7 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define INT_MIN (-2147483648)
-# define INT_MAX 2147483647
+# include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -22,17 +21,17 @@
 
 typedef struct s_node
 {
-	int value;
-	int index;
-	struct s_node *next;
-} t_node;
+	int				value;
+	int				index;
+	struct s_node	*next;
+}	t_node;
 
 typedef struct s_stack
 {
-	t_node *top;
-	int size;
-	char name; // 'A' o 'B'
-} t_stack;
+	t_node	*top;
+	int		size;
+	char	name; // 'A' o 'B'
+}	t_stack;
 
 // Funciones auxiliares
 long				*error_control_parse(int argc, char **argv);

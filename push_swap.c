@@ -14,22 +14,21 @@
 
 int	main(int argc, char **argv)
 {
+	long	*nbr_tokens;
+	char	**tokens;
+	int		num_tokens;
+
+	num_tokens = 0;
 	if (argc < 2)
 		return (1);
-
-	long *nbr_tokens = error_control_parse(argc, argv);
-	
+	nbr_tokens = error_control_parse(argc, argv);
 	if (!nbr_tokens)
 		return (1);
-
-	char **tokens = ft_parse(argc, argv);
-	int num_tokens = 0;
+	tokens = ft_parse(argc, argv);
 	while (tokens[num_tokens])
 		num_tokens++;
-
 	for (int x = 0; x < num_tokens; x++)
 		printf("%ld\n", nbr_tokens[x]);
-
 	if (argc == 2)
 		free_split(tokens);
 	free(nbr_tokens);

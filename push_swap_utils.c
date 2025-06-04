@@ -12,8 +12,9 @@
 
 #include "push_swap.h"
 
-// Función para validar el string controlando que solo haya dígitos o un único sigo
-//	+ dígitos:
+/* Función para validar el string controlando
+que solo haya dígitos o un único sigo
++ dígitos: */
 int	ft_check_valid_input_string(char *s)
 {
 	int	x;
@@ -31,7 +32,8 @@ int	ft_check_valid_input_string(char *s)
 	return (1);
 }
 
-// Función para dividir y tokenizar cada uno de los elementos que se reciban como input:
+/* Función para dividir y tokenizar cada uno
+de los elementos que se reciban como input: */
 char	**ft_parse(int argc, char **argv)
 {
 	char	**tokens;
@@ -62,11 +64,11 @@ static void	ft_check_sign(const char *nptr, int *i, int *s)
 	}
 }
 
-long ft_atol(const char *nptr)
+long	ft_atol(const char *nptr)
 {
-    long     c;
-	int      i;
-	int	     s;
+	long	c;
+	int		i;
+	int		s;
 
 	c = 0;
 	s = 1;
@@ -75,14 +77,6 @@ long ft_atol(const char *nptr)
 	ft_check_sign(nptr, &i, &s);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		if (c > (2147483647 / 10) || (c == (2147483647 / 10)
-				&& (nptr[i] - '0') > (2147483647 % 10)))
-		{
-			if (s == 1)
-				return (2147483647);
-			else
-				return (-2147483648);
-		}
 		c = c * 10 + (nptr[i] - '0');
 		i++;
 	}
@@ -177,32 +171,27 @@ static int	validate_tokens(char **tokens, long *nbr_tokens, int num_tokens)
 	return (1);
 }
 
-
 /* Función que parsea argumentos, valida, convierte,
 detecta errores, y libera memoria si falla.
 Devuelve array de long con los números parseados si éxito,
 NULL y mensaje de error si falla */
 
-long *error_control_parse(int argc, char **argv)
+long	*error_control_parse(int argc, char **argv)
 {
-	char **tokens;
-	long *nbr_tokens;
-	int num_tokens;
+	char	**tokens;
+	long	*nbr_tokens;
+	int		num_tokens;
 
 	tokens = ft_parse(argc, argv);
 	num_tokens = count_tokens(tokens);
 	if (num_tokens == 0)
-		return handle_parse_error(NULL, tokens, argc);
-
+		return (handle_parse_error(NULL, tokens, argc));
 	nbr_tokens = malloc(num_tokens * sizeof(long));
 	if (!nbr_tokens)
-		return handle_parse_error(NULL, tokens, argc);
-
+		return (handle_parse_error(NULL, tokens, argc));
 	if (!validate_tokens(tokens, nbr_tokens, num_tokens))
-		return handle_parse_error(nbr_tokens, tokens, argc);
-
+		return (handle_parse_error(nbr_tokens, tokens, argc));
 	if (argc == 2)
 		free_split(tokens);
-
 	return (nbr_tokens);
 }
