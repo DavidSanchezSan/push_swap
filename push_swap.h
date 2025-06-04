@@ -34,13 +34,13 @@ typedef struct s_stack
 }	t_stack;
 
 // Funciones auxiliares
-long				*error_control_parse(int argc, char **argv);
+long long			*error_control_parse(int argc, char **argv);
 char				**ft_parse(int argc, char **argv);
 int					ft_check_valid_input_string(char *s);
 char				**ft_split(char const *s, char c);
-long				ft_atol(const char *nptr);
+long long				ft_atol(const char *nptr);
 void				free_split(char **split);
-int					ft_check_duplicate(long *nbrs, int num_tokens);
+int					ft_check_duplicate(long long *nbrs, int num_tokens);
 size_t				ft_strlen(const char *s);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 // End of preprocessor directives / guards:

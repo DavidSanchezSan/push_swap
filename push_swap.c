@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	long	*nbr_tokens;
+	long long	*nbr_tokens;
 	char	**tokens;
 	int		num_tokens;
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	while (tokens[num_tokens])
 		num_tokens++;
 	for (int x = 0; x < num_tokens; x++)
-		printf("%ld\n", nbr_tokens[x]);
+		printf("%lld\n", nbr_tokens[x]);
 	if (argc == 2)
 		free_split(tokens);
 	free(nbr_tokens);

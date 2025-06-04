@@ -64,11 +64,11 @@ static void	ft_check_sign(const char *nptr, int *i, int *s)
 	}
 }
 
-long	ft_atol(const char *nptr)
+long long	ft_atol(const char *nptr)
 {
-	long	c;
-	int		i;
-	int		s;
+	long long	c;
+	int			i;
+	int			s;
 
 	c = 0;
 	s = 1;
@@ -85,7 +85,7 @@ long	ft_atol(const char *nptr)
 
 // Función que controla que no haya números repetidos:
 
-int	ft_check_duplicate(long *nbrs, int num_tokens)
+int	ft_check_duplicate(long long *nbrs, int num_tokens)
 {
 	int	x;
     int j;
@@ -123,7 +123,7 @@ void	free_split(char **split)
 Libera memoria de nbr_tokens si está asignada,
 y si argc==2 (se usó ft_split) libera también tokens.
 Imprime "Error\n" por stderr y retorna NULL para señalizar fallo. */
-static long *handle_parse_error(long *nbr_tokens, char **tokens, int argc)
+static long long *handle_parse_error(long long *nbr_tokens, char **tokens, int argc)
 {
     if (nbr_tokens)
         free(nbr_tokens);
@@ -152,7 +152,7 @@ que los números estén dentro de INT_MIN a INT_MAX
 y que no haya duplicados. Devuelve 1 si todo es correcto,
 0 si hay error */
 
-static int	validate_tokens(char **tokens, long *nbr_tokens, int num_tokens)
+static int	validate_tokens(char **tokens, long long *nbr_tokens, int num_tokens)
 {
 	int j;
 
@@ -176,17 +176,17 @@ detecta errores, y libera memoria si falla.
 Devuelve array de long con los números parseados si éxito,
 NULL y mensaje de error si falla */
 
-long	*error_control_parse(int argc, char **argv)
+long long	*error_control_parse(int argc, char **argv)
 {
 	char	**tokens;
-	long	*nbr_tokens;
+	long long	*nbr_tokens;
 	int		num_tokens;
 
 	tokens = ft_parse(argc, argv);
 	num_tokens = count_tokens(tokens);
 	if (num_tokens == 0)
 		return (handle_parse_error(NULL, tokens, argc));
-	nbr_tokens = malloc(num_tokens * sizeof(long));
+	nbr_tokens = malloc(num_tokens * sizeof(long long));
 	if (!nbr_tokens)
 		return (handle_parse_error(NULL, tokens, argc));
 	if (!validate_tokens(tokens, nbr_tokens, num_tokens))
