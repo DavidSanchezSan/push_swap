@@ -19,29 +19,37 @@
 # include <string.h>
 # include <unistd.h>
 
+//Nodo para los stacks (representación de valor en la lista):
 typedef struct s_node
 {
-	int				value;
-	int				index;
-	struct s_node	*next;
+	int				value; //Numero original
+	int				index; //Indice en el orden (algoritmo)
+	struct s_node	*next; //Siguiente nodo en el stack
 }	t_node;
 
+//Lista enlazada para crear los stacks:
 typedef struct s_stack
 {
-	t_node	*top;
-	int		size;
-	char	name; // 'A' o 'B'
+	t_node	*top; // Puntero al primer nodo de la pila
+	int		size; // Tamaño o elementos
+	char	name; // Nombre del stack 'A' o 'B'
 }	t_stack;
 
-// Funciones auxiliares
+// Funciones auxiliares para parse y control de errores:
 long long			*error_control_parse(int argc, char **argv);
 char				**ft_parse(int argc, char **argv);
 int					ft_check_valid_input_string(char *s);
 char				**ft_split(char const *s, char c);
-long long				ft_atol(const char *nptr);
+long long			ft_atol(const char *nptr);
 void				free_split(char **split);
 int					ft_check_duplicate(long long *nbrs, int num_tokens);
 size_t				ft_strlen(const char *s);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
+// Funciones del stack:
+void				print_stack(t_stack *stack);
+t_node				*new_node(int value);
+void				free_stack(t_stack *stack);
+void				assign_indexes(t_stack *stack);
+t_stack				*init_stack_a(long long *nbrs, int count);
 // End of preprocessor directives / guards:
 #endif // PUSH_SWAP_H
