@@ -44,7 +44,7 @@ t_node	*new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
-	node->index = -1;
+	node->index = 0;
 	node->next = NULL;
 	return (node);
 }
@@ -119,4 +119,19 @@ t_stack	*init_stack_a(long long *nbrs, int count)
 		i--;
 	}
 	return (a);
+}
+
+// Función para inicializar el stack 'B' vacío:
+
+t_stack	*init_stack_b(void)
+{
+	t_stack	*b;
+
+	b = malloc(sizeof(t_stack));
+	if (!b)
+		return (NULL);
+	b->top = NULL;
+	b->size = 0;
+	b->name = 'B';
+	return (b);
 }
