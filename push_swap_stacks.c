@@ -18,7 +18,7 @@ void	print_stack(t_stack *stack)
 {
 	t_node	*current;
 
-	printf("-------------------------------\n");
+	//printf("\n-------------------------------\n");
 	if (!stack)
 	{
 		printf("Stack vacio(NULL)\n");
@@ -28,10 +28,11 @@ void	print_stack(t_stack *stack)
 	current = stack->top;
 	while (current)
 	{
-		printf("  Numero: [%d] con indice: %d\n", current->value, current->index);
+		// printf("  Numero: [%d] con indice: %d\n", current->value, current->index);
+		printf("  Numero: %d\n", current->value);
 		current = current->next;
 	}
-	printf("-------------------------------\n");
+	//printf("-------------------------------\n");
 }
 
 // Función que crea nodos para el stack:

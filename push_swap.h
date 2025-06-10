@@ -35,7 +35,7 @@ typedef struct s_stack
 	char	name; // Nombre del stack 'A' o 'B'
 }	t_stack;
 
-// Funciones auxiliares para parse y control de errores:
+// Funciones auxiliares para parseo y control de errores:
 long long			*error_control_parse(int argc, char **argv);
 char				**ft_parse(int argc, char **argv);
 int					ft_check_valid_input_string(char *s);
@@ -64,5 +64,14 @@ void				rr(t_stack *a, t_stack *b);
 void				rra(t_stack *a);
 void				rrb(t_stack *b);
 void				rrr(t_stack *a, t_stack *b);
+// Funciones para el algoritmo:
+int					is_sorted(t_stack *stack);
+t_node				*find_min_node(t_stack *stack);
+void				move_node_to_top(t_stack *s, t_node *t, char id);
+void				sort_2(t_stack *a);
+void				sort_3(t_stack *a);
+void				sort_4(t_stack *a, t_stack *b);
+void				sort_5(t_stack *a, t_stack *b);
+void				sort_small(t_stack *a, t_stack *b);
 // End of preprocessor directives / guards:
 #endif // PUSH_SWAP_H
