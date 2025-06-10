@@ -12,29 +12,6 @@
 
 #include "push_swap.h"
 
-// Función que imprime el stack:
-
-void	print_stack(t_stack *stack)
-{
-	t_node	*current;
-
-	//printf("\n-------------------------------\n");
-	if (!stack)
-	{
-		printf("Stack vacio(NULL)\n");
-		return;
-	}
-	printf("Stack %c (cantidad: %d):\n", stack->name, stack->size);
-	current = stack->top;
-	while (current)
-	{
-		// printf("  Numero: [%d] con indice: %d\n", current->value, current->index);
-		printf("  Numero: %d\n", current->value);
-		current = current->next;
-	}
-	//printf("-------------------------------\n");
-}
-
 // Función que crea nodos para el stack:
 
 t_node	*new_node(int value)
