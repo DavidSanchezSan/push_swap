@@ -64,7 +64,7 @@ void	sort_4(t_stack *a, t_stack *b)
 	if (a->size != 4 || is_sorted(a))
 		return ;
 	min = find_min_node(a);
-	move_node_to_top(a, min, 'a');
+	move_node_to_top(a, min);
 	pb(a, b);
 	sort_3(a);
 	pa(a, b);
@@ -79,10 +79,10 @@ void	sort_5(t_stack *a, t_stack *b)
 	if (a->size != 5 || is_sorted(a))
 		return ;
 	min = find_min_node(a); // Sacar primer mínimo
-	move_node_to_top(a, min, 'a');
+	move_node_to_top(a, min);
 	pb(a, b);
 	min = find_min_node(a); // Sacar segundo mínimo
-	move_node_to_top(a, min, 'a');
+	move_node_to_top(a, min);
 	pb(a, b);
 	sort_3(a); // Ordenar los 3 restantes
 	if (b->top->index < b->top->next->index) // Ordenar stack B si hace falta (solo 2 elementos)

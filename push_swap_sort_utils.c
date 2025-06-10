@@ -52,7 +52,7 @@ t_node	*find_min_node(t_stack *stack)
 
 // Función para mover nodo a la primera posición:
 
-void	move_node_to_top(t_stack *s, t_node *t, char id)
+void	move_node_to_top(t_stack *s, t_node *t)
 {
 	int		pos;
 	t_node	*current;
@@ -67,22 +67,12 @@ void	move_node_to_top(t_stack *s, t_node *t, char id)
 	if (pos <= s->size / 2)
 	{
 		while (s->top != t)
-		{
-			if (id == 'a')
-				ra(s);
-			else
-				rb(s);
-		}
+			ra(s);
 	}
 	else
 	{
 		while (s->top != t)
-		{
-			if (id == 'a')
-				rra(s);
-			else
-				rrb(s);
-		}
+			rra(s);
 	}
 }
 

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-// Función atol que convierte en long los arrays:
+// Función atol que convierte en long long los arrays:
 
 static void	ft_check_sign(const char *nptr, int *i, int *s)
 {
@@ -47,6 +47,7 @@ long long	ft_atol(const char *nptr)
 /* Función para validar el string controlando
 que solo haya dígitos o un único sigo
 + dígitos: */
+
 int	ft_check_valid_input_string(char *s)
 {
 	int	x;

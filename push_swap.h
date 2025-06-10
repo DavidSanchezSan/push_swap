@@ -67,11 +67,15 @@ void				rrr(t_stack *a, t_stack *b);
 // Funciones para el algoritmo:
 int					is_sorted(t_stack *stack);
 t_node				*find_min_node(t_stack *stack);
-void				move_node_to_top(t_stack *s, t_node *t, char id);
+void				move_node_to_top(t_stack *s, t_node *t);
 void				sort_2(t_stack *a);
 void				sort_3(t_stack *a);
 void				sort_4(t_stack *a, t_stack *b);
 void				sort_5(t_stack *a, t_stack *b);
 void				sort_small(t_stack *a, t_stack *b);
+int					get_target_pos(t_stack *a, int b_index);
+int					get_cost(int a_size, int a_pos, int b_size, int b_pos);
+void				do_cheapest_move(t_stack *a, t_stack *b);
+void				greedy_sort(t_stack *a, t_stack *b);
 // End of preprocessor directives / guards:
 #endif // PUSH_SWAP_H
