@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:49:51 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/03 13:08:33 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:52:20 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	assign_indexes(stack_a);
-	if(stack_a->size <= 5)
+	if (stack_a->size <= 5)
 		sort_small(stack_a, stack_b);
 	else
 		greedy_sort(stack_a, stack_b);

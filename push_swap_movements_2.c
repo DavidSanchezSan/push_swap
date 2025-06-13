@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 19:45:03 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/09 19:45:03 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:05:12 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,12 @@ void	pb(t_stack *a, t_stack *b)
 
 	if (!a || a->size == 0)
 		return ;
-
 	tmp = a->top;
 	a->top = tmp->next;
 	a->size--;
-
 	tmp->next = b->top;
 	b->top = tmp;
 	b->size++;
-
 	write(1, "pb\n", 3);
 }
 

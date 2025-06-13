@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 20:15:32 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/09 20:15:32 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:05:45 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	reverse_rotate_nodes(t_stack *stack)
 {
 	t_node	*prev;
 	t_node	*last;
+
 	if (!stack || stack->size < 2 || !stack->top)
 		return ;
 	prev = NULL;

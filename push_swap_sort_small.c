@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 13:27:12 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/10 13:27:12 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:07:10 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	sort_5(t_stack *a, t_stack *b)
 	move_node_to_top(a, min);
 	pb(a, b);
 	sort_3(a); // Ordenar los 3 restantes
-	if (b->top->index < b->top->next->index) // Ordenar stack B si hace falta (solo 2 elementos)
+	if (b->top->index < b->top->next->index)
+		// Ordenar stack B si hace falta (solo 2 elementos)
 		sb(b);
 	pa(a, b); // Volver a meter los dos mínimos
 	pa(a, b);
@@ -94,16 +95,16 @@ void	sort_5(t_stack *a, t_stack *b)
 // Función que unifica el ordenamiento de poco elementos:
 void	sort_small(t_stack *a, t_stack *b)
 {
-    if (is_sorted(a))
- 	   return ;
+	if (is_sorted(a))
+		return ;
 	if (a->size == 1)
- 	   return ;
-    if (a->size == 2)
- 	   sort_2(a);
-    else if (a->size == 3)
- 	   sort_3(a);
-    else if (a->size == 4)
- 	   sort_4(a, b);
-    else if (a->size == 5)
- 	   sort_5(a, b);
+		return ;
+	if (a->size == 2)
+		sort_2(a);
+	else if (a->size == 3)
+		sort_3(a);
+	else if (a->size == 4)
+		sort_4(a, b);
+	else if (a->size == 5)
+		sort_5(a, b);
 }

@@ -55,8 +55,9 @@ int	ft_check_valid_input_string(char *s)
 	x = 0;
 	while (s[x])
 	{
-		if ((s[x] == '-' || s[x] == '+') && (!s[x + 1] || (s[x + 1] < '0' || s[x + 1] > '9')))
-    		return (0);
+		if ((s[x] == '-' || s[x] == '+')
+			&& (!s[x + 1] || (s[x + 1] < '0' || s[x + 1] > '9')))
+			return (0);
 		else if ((s[x] < '0' || s[x] > '9') && s[x] != ' ' && s[x] != '-'
 			&& s[x] != '+')
 			return (0);
@@ -70,24 +71,24 @@ int	ft_check_valid_input_string(char *s)
 int	ft_check_duplicate(long long *nbrs, int num_tokens)
 {
 	int	x;
-    int j;
+	int	j;
 
 	x = 0;
 	while (x < num_tokens)
 	{
-        j = x + 1;
-        while(j < num_tokens)
+		j = x + 1;
+		while (j < num_tokens)
 		{
-            if(nbrs[x] == nbrs[j])
-                return (0);
-            j++;
-        }
+			if (nbrs[x] == nbrs[j])
+				return (0);
+			j++;
+		}
 		x++;
 	}
 	return (1);
 }
 
-//Función para liberar array:
+// Función para liberar array:
 
 void	free_split(char **split)
 {
@@ -95,7 +96,7 @@ void	free_split(char **split)
 
 	i = 0;
 	if (!split)
-		return;
+		return ;
 	while (split[i])
 		free(split[i++]);
 	free(split);

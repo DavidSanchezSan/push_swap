@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 11:27:29 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/03 13:08:35 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:47:24 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ Libera memoria de nbr_tokens si está asignada,
 y si argc==2 (se usó ft_split) libera también tokens.
 Imprime "Error\n" por stderr y retorna NULL para señalizar fallo. */
 
-static long long *handle_parse_error(long long *nbr_tokens, char **tokens, int argc)
+static long long	*handle_parse_error(long long *nbr_tokens, char **tokens,
+		int argc)
 {
-    if (nbr_tokens)
-        free(nbr_tokens);
-    if (argc == 2 && tokens)
-        free_split(tokens);
-    write(2, "Error\n", 6);
-    return (NULL);
+	if (nbr_tokens)
+		free(nbr_tokens);
+	if (argc == 2 && tokens)
+		free_split(tokens);
+	write(2, "Error\n", 6);
+	return (NULL);
 }
-
 
 // Cuenta cuántos tokens (strings) hay en el array terminado en NULL
 
 static int	count_tokens(char **tokens)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (tokens[count])
@@ -61,9 +61,10 @@ que los números estén dentro de INT_MIN a INT_MAX
 y que no haya duplicados. Devuelve 1 si todo es correcto,
 0 si hay error */
 
-static int	validate_tokens(char **tokens, long long *nbr_tokens, int num_tokens)
+static int	validate_tokens(char **tokens, long long *nbr_tokens,
+		int num_tokens)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (tokens[j])
@@ -87,9 +88,9 @@ NULL y mensaje de error si falla */
 
 long long	*error_control_parse(int argc, char **argv)
 {
-	char	**tokens;
+	char		**tokens;
 	long long	*nbr_tokens;
-	int		num_tokens;
+	int			num_tokens;
 
 	tokens = ft_parse(argc, argv);
 	num_tokens = count_tokens(tokens);

@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 19:07:52 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/09 19:07:52 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:04:39 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,11 @@ void	pa(t_stack *a, t_stack *b)
 
 	if (!b || b->size == 0)
 		return ;
-
 	tmp = b->top;
 	b->top = tmp->next;
 	b->size--;
-
 	tmp->next = a->top;
 	a->top = tmp;
 	a->size++;
-
 	write(1, "pa\n", 3);
 }

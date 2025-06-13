@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 11:27:48 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/10 11:27:48 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:55:12 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,3 @@ void	move_node_to_top(t_stack *s, t_node *t)
 			rra(s);
 	}
 }
-

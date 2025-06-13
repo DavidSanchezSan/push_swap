@@ -6,7 +6,7 @@
 /*   By: dasanche <dasanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 12:59:47 by dasanche          #+#    #+#             */
-/*   Updated: 2025/06/07 12:59:47 by dasanche         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:55:36 by dasanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_stack(t_stack *stack)
 	t_node	*tmp;
 
 	if (!stack)
-		return;
+		return ;
 	while (stack->top)
 	{
 		tmp = stack->top;
