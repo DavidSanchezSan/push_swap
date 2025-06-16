@@ -12,9 +12,11 @@
 
 #include "libft.h"
 
-// It takes as parameter a node ‘lst’ and frees the memory of the content using
-// the function ‘del’ given as parameter, in addition to freeing the node. The
-// memory of the ‘next’ must not be freed.
+/*
+It takes as parameter a node ‘lst’ and frees the memory of the content using
+the function ‘del’ given as parameter, in addition to freeing the node. The
+memory of the ‘next’ must not be freed.
+*/
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {

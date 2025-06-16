@@ -12,8 +12,10 @@
 
 #include "libft.h"
 
-// Reserves and returns a substring of the string ‘s’.
-// The substring starts from index ‘start’ and has a maximum length of ‘len’.
+/*
+Reserves and returns a substring of the string ‘s’.
+The substring starts from index ‘start’ and has maximum length of ‘len’.
+*/
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

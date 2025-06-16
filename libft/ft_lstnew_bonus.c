@@ -12,8 +12,10 @@
 
 #include "libft.h"
 
-// Create a new node using mallocc. The member variable ‘content’ is initialised
-// with the contents of the parameter ‘content’. The variable ‘next’, with NULL.
+/*
+Create a new node using mallocc. The member variable ‘content’ is initialised
+with the contents of parameter ‘content’. The variable ‘next’ with NULL.
+*/
 
 t_list	*ft_lstnew(void *content)
 {

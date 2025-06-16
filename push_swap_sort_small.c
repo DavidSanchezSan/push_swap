@@ -35,25 +35,31 @@ void	sort_3(t_stack *a)
 	first = a->top->index;
 	second = a->top->next->index;
 	third = a->top->next->next->index;
-	if (first < second && second < third) // Caso 1: 0 1 2 → ya está ordenado
-		return ;
-	else if (first < third && third < second) // Caso 2: 0 2 1 → sa + ra
+	if (first < third && third < second)
 	{
 		sa(a);
 		ra(a);
 	}
-	else if (second < first && first < third) // Caso 3: 1 0 2 → sa
+	else if (second < first && first < third)
 		sa(a);
-	else if (third < first && first < second) // Caso 4: 1 2 0 → rra
+	else if (third < first && first < second)
 		rra(a);
-	else if (second < third && third < first) // Caso 5: 2 0 1 → ra
+	else if (second < third && third < first)
 		ra(a);
-	else if (third < second && second < first) // Caso 6: 2 1 0 → sa + rra
+	else if (third < second && second < first)
 	{
 		sa(a);
 		rra(a);
 	}
 }
+
+/*
+Caso 1: 0 2 1 → sa + ra
+Caso 2: 1 0 2 → sa
+Caso 3: 1 2 0 → rra
+Caso 4: 2 0 1 → ra
+Caso 5: 2 1 0 → sa + rra
+*/
 
 // Función para cuatro elementos:
 
@@ -78,19 +84,26 @@ void	sort_5(t_stack *a, t_stack *b)
 
 	if (a->size != 5 || is_sorted(a))
 		return ;
-	min = find_min_node(a); // Sacar primer mínimo
+	min = find_min_node(a);
 	move_node_to_top(a, min);
 	pb(a, b);
-	min = find_min_node(a); // Sacar segundo mínimo
+	min = find_min_node(a);
 	move_node_to_top(a, min);
 	pb(a, b);
-	sort_3(a); // Ordenar los 3 restantes
+	sort_3(a);
 	if (b->top->index < b->top->next->index)
-		// Ordenar stack B si hace falta (solo 2 elementos)
 		sb(b);
-	pa(a, b); // Volver a meter los dos mínimos
+	pa(a, b);
 	pa(a, b);
 }
+
+/*
+Sacar primer mínimo
+Sacar segundo mínimo
+Ordenar los 3 restantes
+Ordenar stack B si hace falta (solo 2 elementos)
+Volver a meter los dos mínimos
+*/
 
 // Función que unifica el ordenamiento de poco elementos:
 void	sort_small(t_stack *a, t_stack *b)

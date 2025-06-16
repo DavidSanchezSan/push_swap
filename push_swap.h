@@ -73,9 +73,20 @@ void				sort_3(t_stack *a);
 void				sort_4(t_stack *a, t_stack *b);
 void				sort_5(t_stack *a, t_stack *b);
 void				sort_small(t_stack *a, t_stack *b);
+void				perform_rotations(t_stack *a, t_stack *b,
+						int best_a_pos, int best_b_pos);
 int					get_target_pos(t_stack *a, int b_index);
 int					get_cost(int a_size, int a_pos, int b_size, int b_pos);
 void				do_cheapest_move(t_stack *a, t_stack *b);
 void				greedy_sort(t_stack *a, t_stack *b);
+int					find_target_pos_greater(t_stack *a,
+						int b_index, int *found);
+int					find_min_index_pos(t_stack *a);
+void				find_best_positions(t_stack *a, t_stack *b,
+						int *best_a_pos, int *best_b_pos);
+void				perform_upper_half_rotations(t_stack *a, t_stack *b,
+						int best_a_pos, int best_b_pos);
+void				perform_lower_half_rotations(t_stack *a, t_stack *b,
+						int best_a_pos, int best_b_pos);
 // End of preprocessor directives / guards:
 #endif // PUSH_SWAP_H

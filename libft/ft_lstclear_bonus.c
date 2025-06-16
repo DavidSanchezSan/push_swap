@@ -12,9 +12,10 @@
 
 #include "libft.h"
 
-// Deletes and frees the given ‘lst’ node and all consecutive nodes of that
-// node, using the ‘del’ and free function. At the end, the pointer to the list
-// must be NULL.
+/* Deletes and frees the given ‘lst’ node and all consecutive nodes of that
+node, using the ‘del’ and free function. At the end, the pointer to the list
+must be NULL
+*/
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {

@@ -68,7 +68,7 @@ void	assign_indexes(t_stack *stack)
 	}
 }
 
-// Función para inicializar el stack 'A' con los elementos (números) recibidos:
+// Función para inicializar el stack 'A' con los elementos recibidos:
 
 t_stack	*init_stack_a(long long *nbrs, int count)
 {

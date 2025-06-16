@@ -12,9 +12,11 @@
 
 #include "libft.h"
 
-// Strips all characters of a string ‘set’ from the beginning and from the end
-// of ‘s1’, until a character not belonging to ‘set’ is found. The resulting
-// string is returned with a malloc reservation.
+/*
+Strips all characters of a string ‘set’ from the beginning and from the end
+of ‘s1’, until a character not belonging to ‘set’ is found. The resulting
+string is returned with a malloc reservation.
+*/
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
