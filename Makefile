@@ -14,7 +14,7 @@ SRC = push_swap.c \
 	  push_swap_movements_2.c \
 	  push_swap_movements_3.c \
 	  push_swap_greedy_utils.c \
-	  push_swap_greedy_sort.c
+	  push_swap_greedy_sort.c \
 
 OBJ = $(SRC:.c=.o)
 HEADERS = push_swap.h
@@ -47,7 +47,7 @@ fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) -C $(LIBDIR) fclean
 
-# Forzar recompilación completa
+# Recompilación completa
 re: fclean all
 
 .PHONY: all clean fclean re

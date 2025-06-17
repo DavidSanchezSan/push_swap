@@ -93,3 +93,15 @@ int	main(int argc, char **argv)
 		free_split(tokens);
 	return (0);
 }
+
+/*
+	t_node *x = a->top;
+	printf("----------------------");
+	printf("\n%d\n", x->value);
+	while(x->next != NULL)
+	{
+		x = x->next;
+		printf("%d\n", x->value);
+	}
+	printf("----------------------");
+*/
