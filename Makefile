@@ -1,44 +1,53 @@
-NAME    =   push_swap
-# Paths
-SRC_DIR = src
-INCLUDE_DIR = includes
-LIBFT_DIR = libft
-OBJ_DIR = obj
-# Libft
-LIBFT   =   $(LIBFT_DIR)/libft.a
-LIBFT_INCLUDE   = -I$(LIBFT_DIR)/include
-# Source files
-SRC     =   $(SRC_DIR)/main.c\
-            $(SRC_DIR)/push_swap.c\
-            $(SRC_DIR)/stack_manager.c\
-            $(SRC_DIR)/init.c\
-            $(SRC_DIR)/push_swap_utils.c\
-            $(SRC_DIR)/arg_check.c\
-            $(SRC_DIR)/stack_moves.c\
-            $(SRC_DIR)/algorithm_utils.c\
-            $(SRC_DIR)/ranks.c
-# Objects
-OBJ     =   $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-# Compiling rules
-CC      =   cc
-CFLAGS  =   -Wall -Wextra -Werror
-# Includes
-INCLUDES = -I$(INCLUDE_DIR) $(LIBFT_INCLUDE)
-# Building commands:
-all: $(NAME)
-$(NAME): $(OBJ) $(LIBFT)
-    $(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME)
-$(LIBFT):
-    @$(MAKE) -C $(LIBFT_DIR)
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-    $(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-$(OBJ_DIR):
-    mkdir -p $(OBJ_DIR)
+# Variables
+NAME	=	push_swap
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
+RM		=	rm -f
+
+SRC = push_swap.c \
+	  push_swap_utils.c \
+	  push_swap_stacks.c \
+	  push_swap_sort_utils.c \
+	  push_swap_sort_small.c \
+	  push_swap_parse.c \
+	  push_swap_movements_1.c \
+	  push_swap_movements_2.c \
+	  push_swap_movements_3.c \
+	  push_swap_greedy_utils.c \
+	  push_swap_greedy_sort.c
+
+OBJ = $(SRC:.c=.o)
+HEADERS = push_swap.h
+
+LIBDIR = libft
+LIB = $(LIBDIR)/libft.a
+
+# Target principal
+all: $(LIB) $(NAME)
+
+# Regla para compilar ejecutable, enlazando la librería
+$(NAME): $(OBJ) $(LIB)
+	$(CC) $(CFLAGS) $(OBJ) -L$(LIBDIR) -lft -o $(NAME)
+
+# Compilar cada .c a .o (si cambia el .h, también recompila)
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Regla para compilar la librería externa usando su Makefile
+$(LIB):
+	$(MAKE) -C $(LIBDIR)
+
+# Limpiar archivos objeto
 clean:
-    rm -f $(OBJ)
-    @$(MAKE) -C $(LIBFT_DIR) clean
+	$(RM) $(OBJ)
+	$(MAKE) -C $(LIBDIR) clean
+
+# Limpiar objetos y ejecutable
 fclean: clean
-    rm -f $(NAME)
-    @$(MAKE) -C $(LIBFT_DIR) fclean
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBDIR) fclean
+
+# Forzar recompilación completa
 re: fclean all
+
 .PHONY: all clean fclean re
