@@ -10,9 +10,9 @@ SRC = push_swap.c \
 	  push_swap_sort_utils.c \
 	  push_swap_sort_small.c \
 	  push_swap_parse.c \
-	  push_swap_movements_1.c \
-	  push_swap_movements_2.c \
-	  push_swap_movements_3.c \
+	  push_swap_movements_swap_push.c \
+	  push_swap_movements_reverse.c \
+	  push_swap_movements_push_rotate.c \
 	  push_swap_greedy_utils.c \
 	  push_swap_greedy_sort.c \
 
